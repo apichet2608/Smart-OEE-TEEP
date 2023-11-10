@@ -13,6 +13,8 @@ export default function Title() {
           return "OEE-and-TEEP";
         case "/oee-and-teep":
           return "OEE-and-TEEP";
+        case "/quick-plan":
+          return "Quick Plan";
 
         default:
           return "";
@@ -24,9 +26,11 @@ export default function Title() {
 
   return (
     <>
-      <Typography variant="h6" noWrap component="div">
-        {pageTitle}
-      </Typography>
+      <div className="animate-rtl">
+        <Typography variant="h6" noWrap component="div">
+          {pageTitle}
+        </Typography>
+      </div>
     </>
   );
 }

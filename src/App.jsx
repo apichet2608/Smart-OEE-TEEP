@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import PageFormat1 from "./Pages/Page-Format/main/page-format.jsx";
 import Navbar from "./Components/common/Navbar/navbar.jsx";
 import OeeTeep from "./Pages/Page-oee-and-teep/Page-oee-and-teep.jsx";
+import QuickPlan from "./Pages/Page-quick-plan/main/Page-quick-plan.jsx";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -24,6 +25,7 @@ export default function MiniDrawer() {
           <Routes>
             <Route path="/" element={<OeeTeep />} />
             <Route path="/oee-and-teep" element={<OeeTeep />} />
+            <Route path="/quick-plan" element={<QuickPlan />} />
           </Routes>
         </Box>
       </Box>

@@ -18,7 +18,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import FujiLogo from "../../../../public/Fuji.png";
 import Icon1 from "../../../../public/icon/efficiency.png";
-import Icon2 from "../../../../public/icon/icons8-money-box-48.png";
+import Icon2 from "../../../../public/icon/quickplan.png";
 import Icon3 from "../../../../public/icon/icons8-money-bag-48.png";
 import PageTitle from "./Title/Title";
 import Navbuttton from "./Button/Navbuttton";
@@ -99,6 +99,7 @@ export default function MiniDrawer() {
   //sidebar items
   const sidebarItems = [
     { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
+    { name: "Quick Plan", link: "/Quick-Plan", icon: Icon2 },
     // { name: "Page1", link: "/page", icon: Icon2 },
     // { name: "Page2", link: "/page1", icon: Icon3 },
     // Add more sidebar items as needed
@@ -118,6 +119,8 @@ export default function MiniDrawer() {
           return "OEE-and-TEEP";
         case "/oee-and-teep":
           return "OEE-and-TEEP";
+        case "/quick-plan":
+          return "Quick Plan";
         // case "/page":
         //   return "Page1";
         // case "/page1":

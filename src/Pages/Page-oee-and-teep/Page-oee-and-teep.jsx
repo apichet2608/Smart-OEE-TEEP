@@ -462,7 +462,11 @@ export default function QuantitySelect() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {/* <Container maxWidth="xl"> */}
-        <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
+        <Box
+          maxWidth="xl"
+          sx={{ height: 800, width: "100%" }}
+          className="animate-fade"
+        >
           <Grid container spacing={2}>
             <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
               <Item>
