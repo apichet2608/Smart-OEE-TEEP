@@ -77,7 +77,9 @@ const QuickPlan = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3001/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime`
+        `${
+          import.meta.env.VITE_IP_API
+        }/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime`
       )
       .then((response) => {
         setRows(response.data);
@@ -212,7 +214,9 @@ const QuickPlan = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3001/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime`
+        `${
+          import.meta.env.VITE_IP_API
+        }/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime`
       )
       .then((response) => {
         // Assuming your response.data is an array of objects
@@ -239,7 +243,11 @@ const QuickPlan = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3001/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime?fac_unit_desc=${filterOptions.facUnitDesc}`
+        `${
+          import.meta.env.VITE_IP_API
+        }/smart_oee_teep/quick_plan/smart_product_lot_wip_holdingtime/smart_product_lot_wip_holdingtime?fac_unit_desc=${
+          filterOptions.facUnitDesc
+        }`
       )
       .then((response) => {
         const uniqueProcDisp = [
