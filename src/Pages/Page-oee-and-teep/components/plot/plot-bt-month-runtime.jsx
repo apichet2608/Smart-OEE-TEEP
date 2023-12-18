@@ -1,11 +1,11 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-const ChartComponent = ({ data, title }) => {
-  const xData = data.map((item) => item.date_time);
-  const powerOnData = data.map((item) => item.power_on);
-  const powerOffData = data.map((item) => item.power_off);
-  const autoRunData = data.map((item) => item.auto_run);
+const ChartComponent = ({ data }) => {
+  const xData = data.map((item) => item.process_group);
+  const powerOnData = data.map((item) => item.p_on);
+  const powerOffData = data.map((item) => item.p_off);
+  const autoRunData = data.map((item) => item.p_run);
 
   const trace1 = {
     x: xData,
@@ -59,15 +59,16 @@ const ChartComponent = ({ data, title }) => {
 
   const layout = {
     barmode: "relative",
-    title: `${title} Machine Status (90 day)`,
+    title: `% Machine Status by Process`,
     xaxis: {
-      // title: "",
       tickangle: -45,
       automargin: true,
+      // title: "",
     },
     yaxis: {
-      title: "min",
+      title: "%",
     },
+    showlegend: true,
     // width: 1400,
     // height: "100%",
     // width: 1450,

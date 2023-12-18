@@ -17,9 +17,16 @@ import { ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PlotPerformanceMeasurement from "./components/plot/plot-Performance-measurement";
 import PlotMachineStatus from "./components/plot/plot-Machine-Status";
+import PlotbyMonth from "./components/plot/plot-bt-month-runtime";
+import PlotbyMonthAvailable from "./components/plot/plot-bt-month-available";
 import LoadingPage from "../Page-Loading/LoadingPage";
 import TableOeeTeep from "./components/TableOeeTeep/TableOeeTeep";
 import { Divider } from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -45,7 +52,7 @@ export default function QuantitySelect() {
   const [isLoadingplot, setisLoadingplot] = useState(false);
 
   const [selectedBuild, setSelectedBuild] = React.useState({
-    buiding: "ALL",
+    buiding: "A",
   });
   const [BuildOptions, setBuildOptions] = React.useState([]);
   const handleBuildChange = (event, value) => {
@@ -76,6 +83,8 @@ export default function QuantitySelect() {
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value);
   };
+
+  const [DataplotBymonth, setDataplotBymonth] = useState([]);
 
   useEffect(() => {}, []);
   useEffect(() => {
@@ -117,6 +126,24 @@ export default function QuantitySelect() {
         .catch((error) => {
           console.log(error);
         });
+
+    let trimmedDate = startDate.substring(0, 7);
+    axios
+      .get(
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_smart_machine_oee
+        }/data-plot-by-month?date=${trimmedDate}&build=${selectedBuild.buiding}`
+      )
+      .then((response) => {
+        const data = response.data;
+        setDataplotBymonth(data);
+        console.log(data);
+
+        // Perform any further processing or state updates based on the fetched data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [startDate, selectedBuild]);
 
   useEffect(() => {
@@ -125,7 +152,6 @@ export default function QuantitySelect() {
     );
     if (startDate && selectedBuild && selectedProcess) {
       setisLoading(true);
-
       axios
         .get(
           `${import.meta.env.VITE_IP_API}${
@@ -356,9 +382,47 @@ export default function QuantitySelect() {
                   xs={12}
                   sm={12}
                   md={12}
+                  lg={12}
+                  xl={12}
+                  sx={{ mt: 2 }}
+                >
+                  <>
+                    {/* <Item>
+                      <PlotbyMonth data={DataplotBymonth} />
+                    </Item>
+                    <Item>
+                      <PlotbyMonthAvailable data={DataplotBymonth} />
+                    </Item> */}
+                    <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                        <div className=" font-bold text-xl">
+                          Over All By Month 📊
+                        </div>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <>
+                          <PlotbyMonth data={DataplotBymonth} />
+                        </>
+                        <div className=" mt-2"></div>
+                        <>
+                          <PlotbyMonthAvailable data={DataplotBymonth} />
+                        </>
+                      </AccordionDetails>
+                    </Accordion>
+                  </>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
                   lg={6.5}
                   xl={6.5}
-                  sx={{ mt: 2 }}
+                  // sx={{ mt: 2 }}
                 >
                   <>
                     <TableOeeTeep
@@ -375,7 +439,7 @@ export default function QuantitySelect() {
                   md={12}
                   lg={5.5}
                   xl={5.5}
-                  sx={{ mt: 2 }}
+                  // sx={{ mt: 2 }}
                 >
                   {apiDataPlot.length > 0 ? (
                     <>
@@ -393,6 +457,15 @@ export default function QuantitySelect() {
                             title={mccode}
                           />
                         </Item>
+                        {/* <Item>
+                          <PlotbyMonth data={DataplotBymonth} title={mccode} />
+                        </Item>
+                        <Item>
+                          <PlotbyMonthAvailable
+                            data={DataplotBymonth}
+                            title={mccode}
+                          />
+                        </Item> */}
                       </>
                     </>
                   ) : (

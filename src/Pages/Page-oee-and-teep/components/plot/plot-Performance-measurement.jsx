@@ -46,6 +46,8 @@ const ChartComponent = ({ data, title }) => {
     title: `${title} %OEE (90 day)`,
     xaxis: {
       // title: "Date/Time",
+      tickangle: -45,
+      automargin: true,
     },
     yaxis: {
       title: "Percentage",
@@ -69,7 +71,7 @@ const ChartComponent = ({ data, title }) => {
       data={chartData}
       layout={layout}
       // config={{ responsive: true }}
-      style={{ width: "100%", height: "350px" }}
+      style={{ width: "100%", height: "320px" }}
       useResizeHandler={true}
     />
   );

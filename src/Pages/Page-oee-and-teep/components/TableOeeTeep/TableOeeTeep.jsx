@@ -86,13 +86,13 @@ function TableOeeTeep({ DataTask, handleButtonClick, isDarkMode }) {
     {
       field: "process_group",
       headerName: "Process",
-      width: 90,
+      width: 100,
       renderCell: (params) => params.value,
     },
     {
       field: "mc_code",
       headerName: "MC Code",
-      width: 120,
+      width: 130,
       renderCell: (params) => (
         <Button onClick={() => handleButtonClick(params.value)}>
           {params.value}
@@ -267,15 +267,15 @@ function TableOeeTeep({ DataTask, handleButtonClick, isDarkMode }) {
     {
       field: "power_off",
       headerName: "OFF(min)",
-      // width: 90,
+      width: 90,
       renderCell: (params) => params.value,
-      flex: 1,
+      // flex: 1,
     },
   ];
 
   return (
     <div
-      style={{ height: "740px", width: "100%" }}
+      style={{ height: "680px", width: "100%" }}
       className={`${
         isDarkMode ? "bg-white" : "bg-white"
       } rounded-2xl  shadow-md`}

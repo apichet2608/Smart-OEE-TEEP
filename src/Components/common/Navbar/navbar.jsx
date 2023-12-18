@@ -98,13 +98,15 @@ export default function MiniDrawer() {
   const location = useLocation();
   //sidebar items
   const sidebarItems = [
+    { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
+
     { name: "Quick Plan", link: "/Quick-Plan", icon: Icon2 },
     {
       name: "FA-NPM Lot",
       link: "/FA-NPM-Lot-Monitoring",
       icon: Icon3,
     },
-    { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
+    // { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
     // { name: "Page1", link: "/page", icon: Icon2 },
     // { name: "Page2", link: "/page1", icon: Icon3 },
     // Add more sidebar items as needed
