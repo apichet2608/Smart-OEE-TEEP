@@ -15,18 +15,19 @@ import { DataGrid } from "@mui/x-data-grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PLOT1 from "./components/plot/plot-Performance-measurement";
-import PLOT2 from "./components/plot/plot-Machine-Status";
+import PlotPerformanceMeasurement from "./components/plot/plot-Performance-measurement";
+import PlotMachineStatus from "./components/plot/plot-Machine-Status";
 import LoadingPage from "../Page-Loading/LoadingPage";
-
+import TableOeeTeep from "./components/TableOeeTeep/TableOeeTeep";
+import { Divider } from "@mui/material";
 const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 0, // breakpoint xs
-      sm: 600, // breakpoint sm
-      md: 960, // breakpoint md
-      lg: 1280, // breakpoint lg
-      xl: 1900, // breakpoint xl
+      xs: 640, // breakpoint xs
+      sm: 768, // breakpoint sm
+      md: 1024, // breakpoint md
+      lg: 1488, // breakpoint lg
+      xl: 1872, // breakpoint xl
     },
   },
 });
@@ -59,7 +60,19 @@ export default function QuantitySelect() {
     console.log(value.process_group);
   };
   const [apiData, setApiData] = React.useState([]);
-  const [startDate, setStartDate] = React.useState(null);
+
+  // Function to format the date in the "YYYY-MM-DD" format
+  const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
+  // Function to get yesterday's date in the format "YYYY-MM-DD"
+  const getYesterday = () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return formatDate(yesterday);
+  };
+  const [startDate, setStartDate] = React.useState(getYesterday());
+
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value);
   };
@@ -239,6 +252,7 @@ export default function QuantitySelect() {
 
   const [apiDataPlot, setApiDataPlot] = React.useState([]);
   const [mccode, setmccode] = React.useState(null);
+
   const handleButtonClick = (mcCode) => {
     setmccode(mcCode);
     const encodedProcessGroup = encodeURIComponent(
@@ -267,196 +281,6 @@ export default function QuantitySelect() {
       });
   };
 
-  const columns = [
-    {
-      field: "process_group",
-      headerName: "Process",
-      width: 100,
-      renderCell: (params) => params.value,
-    },
-    {
-      field: "mc_code",
-      headerName: "MC Code",
-      width: 130,
-      renderCell: (params) => (
-        <Button onClick={() => handleButtonClick(params.value)}>
-          {params.value}
-        </Button>
-      ),
-    },
-    {
-      field: "buiding",
-      headerName: "Building",
-      width: 80,
-      renderCell: (params) => params.value,
-    },
-
-    {
-      field: "target_oee",
-      headerName: "%OEE Target",
-      width: 110,
-      renderCell: (params) => Math.round(params.value),
-    },
-    {
-      field: "percent_performance",
-      headerName: "%Performance",
-      width: 150,
-      renderCell: (params) => {
-        const roundedValue = Math.round(params.value);
-        const targetOee = params.row.target_oee;
-        // const percentage = (roundedValue / targetOee) * 100;
-
-        let variant = "success";
-        if (roundedValue > targetOee) {
-          variant = "success";
-        } else if (roundedValue > targetOee - 10) {
-          variant = "warning";
-        } else if (roundedValue < targetOee) {
-          variant = "danger";
-        }
-
-        return (
-          <ProgressBar
-            now={roundedValue}
-            variant={variant}
-            label={`${roundedValue}%`}
-            style={{ width: 150 }}
-          />
-        );
-      },
-    },
-    // {
-    //   field: "yield",
-    //   headerName: "% Yield",
-    //   width: 120,
-    //   renderCell: (params) => {
-    //     const roundedValue = Math.round(params.value);
-    //     // const targetOee = params.row.target_oee;
-    //     // const percentage = (roundedValue / targetOee) * 100;
-
-    //     let variant = "success";
-    //     if (roundedValue > 99) {
-    //       variant = "success";
-    //     } else if (roundedValue >= 97 || roundedValue <= 99) {
-    //       variant = "warning";
-    //     } else if (roundedValue < 97) {
-    //       variant = "danger";
-    //     }
-
-    //     return (
-    //       <ProgressBar
-    //         now={roundedValue}
-    //         variant={variant}
-    //         label={`${roundedValue}%`}
-    //         style={{ width: 120 }}
-    //       />
-    //     );
-    //   },
-    // },
-    {
-      field: "percent_available",
-      headerName: "%Available",
-      width: 150,
-      renderCell: (params) => {
-        const roundedValue = Math.round(params.value);
-        const targetOee = params.row.target_oee;
-        // const percentage = (roundedValue / targetOee) * 100;
-
-        let variant = "success";
-        if (roundedValue > targetOee) {
-          variant = "success";
-        } else if (roundedValue > targetOee - 10) {
-          variant = "warning";
-        } else if (roundedValue < targetOee) {
-          variant = "danger";
-        }
-
-        return (
-          <ProgressBar
-            now={roundedValue}
-            variant={variant}
-            label={`${roundedValue}%`}
-            style={{ width: 150 }}
-          />
-        );
-      },
-    },
-    {
-      field: "percent_oee",
-      headerName: "%OEE",
-      width: 150,
-      renderCell: (params) => {
-        const roundedValue = Math.round(params.value);
-        const targetOee = params.row.target_oee;
-        // const percentage = (roundedValue / targetOee) * 100;
-
-        let variant = "success";
-        if (roundedValue > targetOee) {
-          variant = "success";
-        } else if (roundedValue > targetOee - 10) {
-          variant = "warning";
-        } else if (roundedValue < targetOee) {
-          variant = "danger";
-        }
-
-        return (
-          <ProgressBar
-            now={roundedValue}
-            variant={variant}
-            label={`${roundedValue}%`}
-            style={{ width: 150 }}
-          />
-        );
-      },
-    },
-    {
-      field: "percent_teep",
-      headerName: "%TEEP",
-      width: 150,
-      renderCell: (params) => {
-        const roundedValue = Math.round(params.value);
-        const targetOee = params.row.target_oee;
-        // const percentage = (roundedValue / targetOee) * 100;
-
-        let variant = "success";
-        if (roundedValue > targetOee) {
-          variant = "success";
-        } else if (roundedValue > targetOee - 10) {
-          variant = "warning";
-        } else if (roundedValue < targetOee) {
-          variant = "danger";
-        }
-
-        return (
-          <ProgressBar
-            now={roundedValue}
-            variant={variant}
-            label={`${roundedValue}%`}
-            style={{ width: 150 }}
-          />
-        );
-      },
-    },
-    {
-      field: "auto_run",
-      headerName: "Run(min)",
-      width: 110,
-      renderCell: (params) => params.value,
-    },
-    {
-      field: "power_on",
-      headerName: "ON(min)",
-      width: 110,
-      renderCell: (params) => params.value,
-    },
-    {
-      field: "power_off",
-      headerName: "OFF(min)",
-      width: 110,
-      renderCell: (params) => params.value,
-    },
-  ];
-
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -468,13 +292,13 @@ export default function QuantitySelect() {
           className="animate-fade"
         >
           <Grid container spacing={2}>
-            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+            <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
               <Item>
                 <TextField
                   id="start-date"
                   label="Start Date"
                   type="date"
-                  value={startDate || new Date().toISOString().split("T")[0]}
+                  value={startDate}
                   onChange={handleStartDateChange}
                   sx={{ width: "100%" }}
                   InputLabelProps={{
@@ -483,7 +307,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+            <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
               <Item>
                 <Autocomplete
                   disablePortal
@@ -499,7 +323,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+            <Grid item xs={4} sm={4} md={4} lg={2} xl={2}>
               <Item>
                 <Autocomplete
                   disablePortal
@@ -532,27 +356,16 @@ export default function QuantitySelect() {
                   xs={12}
                   sm={12}
                   md={12}
-                  lg={12}
-                  xl={12}
+                  lg={6.5}
+                  xl={6.5}
                   sx={{ mt: 2 }}
                 >
-                  <Item>
-                    <DataGrid
-                      rows={apiData}
-                      columns={columns}
-                      initialState={{
-                        pagination: {
-                          paginationModel: {
-                            pageSize: 100,
-                          },
-                        },
-                      }}
-                      pageSizeOptions={[5]}
-                      // checkboxSelection
-                      disableRowSelectionOnClick
-                      sx={{ height: 650, width: "100%" }}
+                  <>
+                    <TableOeeTeep
+                      DataTask={apiData}
+                      handleButtonClick={handleButtonClick}
                     />
-                  </Item>
+                  </>
                 </Grid>
                 {/* <Grid item xl={12} sx={{ mt: 5 }}> */}
                 <Grid
@@ -560,15 +373,27 @@ export default function QuantitySelect() {
                   xs={12}
                   sm={12}
                   md={12}
-                  lg={12}
-                  xl={12}
-                  sx={{ mt: 5 }}
+                  lg={5.5}
+                  xl={5.5}
+                  sx={{ mt: 2 }}
                 >
                   {apiDataPlot.length > 0 ? (
                     <>
-                      <Item>
-                        <PLOT1 data={apiDataPlot} title={mccode} />
-                      </Item>
+                      <>
+                        <Item>
+                          <PlotPerformanceMeasurement
+                            data={apiDataPlot}
+                            title={mccode}
+                          />
+                        </Item>
+                        <div className=" mt-2"></div>
+                        <Item>
+                          <PlotMachineStatus
+                            data={apiDataPlot}
+                            title={mccode}
+                          />
+                        </Item>
+                      </>
                     </>
                   ) : (
                     <>
@@ -577,27 +402,6 @@ export default function QuantitySelect() {
                   )}
                 </Grid>
                 {/* <Grid item xl={12} sx={{ mt: 5 }}> */}
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  xl={12}
-                  sx={{ mt: 5 }}
-                >
-                  {apiDataPlot.length > 0 ? (
-                    <>
-                      <Item>
-                        <PLOT2 data={apiDataPlot} title={mccode} />
-                      </Item>
-                    </>
-                  ) : (
-                    <>
-                      {isLoadingplot ? <LoadingPage /> : <Item>No Data</Item>}
-                    </>
-                  )}
-                </Grid>
               </Grid>
             ) : (
               <>{isLoading ? <LoadingPage /> : <Item>No Data</Item>}</>

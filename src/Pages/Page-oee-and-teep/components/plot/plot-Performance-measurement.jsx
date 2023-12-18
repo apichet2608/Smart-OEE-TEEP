@@ -27,8 +27,8 @@ const ChartComponent = ({ data, title }) => {
   const trace3 = {
     x: xData,
     y: percentOeeData,
+    fill: "tonexty",
     type: "scatter",
-    mode: "scatter",
     name: "Percent OEE",
   };
 
@@ -39,22 +39,39 @@ const ChartComponent = ({ data, title }) => {
     mode: "scatter",
     name: "Target OEE",
   };
-  const chartData = [trace1, trace2, trace3, trace4];
+  // const chartData = [trace1, trace2, trace3, trace4];
+  const chartData = [trace3, trace4];
 
   const layout = {
-    title: `${title} Performance measurement from select date back 90 day`,
+    title: `${title} %OEE (90 day)`,
     xaxis: {
       // title: "Date/Time",
     },
     yaxis: {
-      // title: "Percentage",
+      title: "Percentage",
     },
-    width: 1400,
-    height: "100%",
+    // width: 1400,
+    // height: "100%",
+    // width: 1450,
+    // height: 350,
+    autosize: true,
+    margin: {
+      l: 50,
+      r: 50,
+      b: 50,
+      t: 30,
+      pad: 4,
+    },
   };
 
   return (
-    <Plot data={chartData} layout={layout} config={{ responsive: true }} />
+    <Plot
+      data={chartData}
+      layout={layout}
+      // config={{ responsive: true }}
+      style={{ width: "100%", height: "350px" }}
+      useResizeHandler={true}
+    />
   );
 };
 
