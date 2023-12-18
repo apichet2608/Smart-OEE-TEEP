@@ -6,6 +6,7 @@ import PageFormat1 from "./Pages/Page-Format/main/page-format.jsx";
 import Navbar from "./Components/common/Navbar/navbar.jsx";
 import OeeTeep from "./Pages/Page-oee-and-teep/Page-oee-and-teep.jsx";
 import QuickPlan from "./Pages/Page-quick-plan/main/Page-quick-plan.jsx";
+import FaNpmLotMonitoring from "./Pages/Page-fa-npm-lot-monitoring/main/Page-fa-npm-lot-monitoring.jsx";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -23,9 +24,14 @@ export default function MiniDrawer() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
           <Routes>
-            <Route path="/" element={<OeeTeep />} />
-            <Route path="/oee-and-teep" element={<OeeTeep />} />
+            <Route path="/" element={<QuickPlan />} />
+
             <Route path="/quick-plan" element={<QuickPlan />} />
+            <Route
+              path="/fa-npm-lot-monitoring"
+              element={<FaNpmLotMonitoring />}
+            />
+            <Route path="/oee-and-teep" element={<OeeTeep />} />
           </Routes>
         </Box>
       </Box>

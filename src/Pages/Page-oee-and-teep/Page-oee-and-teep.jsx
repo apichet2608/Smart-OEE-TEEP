@@ -474,7 +474,7 @@ export default function QuantitySelect() {
                   id="start-date"
                   label="Start Date"
                   type="date"
-                  value={startDate}
+                  value={startDate || new Date().toISOString().split("T")[0]}
                   onChange={handleStartDateChange}
                   sx={{ width: "100%" }}
                   InputLabelProps={{

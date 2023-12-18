@@ -10,11 +10,13 @@ export default function Title() {
     const getPageTitle = () => {
       switch (location.pathname) {
         case "/":
-          return "OEE-and-TEEP";
-        case "/oee-and-teep":
-          return "OEE-and-TEEP";
+          return "Quick Plan";
         case "/quick-plan":
           return "Quick Plan";
+        case "/fa-npm-lot-monitoring":
+          return "FA-NPM Lot Monitoring";
+        case "/oee-and-teep":
+          return "OEE-and-TEEP";
 
         default:
           return "";

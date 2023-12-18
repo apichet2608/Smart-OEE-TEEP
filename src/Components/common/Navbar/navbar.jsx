@@ -19,7 +19,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import FujiLogo from "../../../../public/Fuji.png";
 import Icon1 from "../../../../public/icon/efficiency.png";
 import Icon2 from "../../../../public/icon/quickplan.png";
-import Icon3 from "../../../../public/icon/icons8-money-bag-48.png";
+import Icon3 from "../../../../public/icon/lotmonitoring.png";
 import PageTitle from "./Title/Title";
 import Navbuttton from "./Button/Navbuttton";
 import { NavLink, useLocation } from "react-router-dom";
@@ -98,8 +98,13 @@ export default function MiniDrawer() {
   const location = useLocation();
   //sidebar items
   const sidebarItems = [
-    { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
     { name: "Quick Plan", link: "/Quick-Plan", icon: Icon2 },
+    {
+      name: "FA-NPM Lot",
+      link: "/FA-NPM-Lot-Monitoring",
+      icon: Icon3,
+    },
+    { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
     // { name: "Page1", link: "/page", icon: Icon2 },
     // { name: "Page2", link: "/page1", icon: Icon3 },
     // Add more sidebar items as needed
@@ -116,13 +121,13 @@ export default function MiniDrawer() {
     const getPageTitle = () => {
       switch (location.pathname) {
         case "/":
-          return "OEE-and-TEEP";
-        case "/oee-and-teep":
-          return "OEE-and-TEEP";
+          return "Quick Plan";
         case "/quick-plan":
           return "Quick Plan";
-        // case "/page":
-        //   return "Page1";
+        case "/fa-npm-lot-monitoring":
+          return "FA-NPM Lot";
+        case "/oee-and-teep":
+          return "OEE-and-TEEP";
         // case "/page1":
         //   return "Page2";
 
@@ -145,11 +150,7 @@ export default function MiniDrawer() {
   return (
     <>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        open={open}
-        // sx={{ backgroundColor: "#42a5f5" }}
-      >
+      <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
