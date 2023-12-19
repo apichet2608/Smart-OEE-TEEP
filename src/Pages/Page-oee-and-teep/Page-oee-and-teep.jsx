@@ -405,6 +405,10 @@ export default function QuantitySelect() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <>
+                          <div className=" bg-blue-100 w-fit p-1 rounded-2xl  border-blue-600 border-2">
+                            {startDate.substring(0, 7)}
+                          </div>
+
                           <PlotbyMonth data={DataplotBymonth} />
                         </>
                         <div className=" mt-2"></div>
