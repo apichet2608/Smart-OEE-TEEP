@@ -16,6 +16,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import Swal from "sweetalert2";
+import HoldingTimeDialog from "../components/HoldingTimeDialog";
 
 const StyledDataGrid = styled(DataGrid)({
   "& .MuiDataGrid-columnHeaderTitle": {
@@ -256,7 +257,13 @@ const PageFaNpmLotMonitoring = () => {
       headerAlign: "center",
       align: "right",
       renderCell: (params) => (
-        <div className="font-bold text-amber-500">
+        <div
+          onClick={() => {
+            setLotNo(params.row.lot);
+            setOpenHoldingTime(true);
+          }}
+          className="font-bold text-amber-500 hover:text-amber-300 cursor-pointer hover:scale-105 duration-200 active:scale-95"
+        >
           {Math.floor(params.value)}
         </div>
       ),
@@ -718,6 +725,11 @@ const PageFaNpmLotMonitoring = () => {
     return existingLots.includes(lotNumber);
   };
 
+  // //*Holding Time Dialog
+  // const [selectedHoldingTime, setSelectedHoldingTime] = useState("ALL");
+  // console.log("selectedHoldingTime", selectedHoldingTime);
+  const [openHoldingTime, setOpenHoldingTime] = useState(false);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -1010,6 +1022,13 @@ const PageFaNpmLotMonitoring = () => {
                 </button>
               </DialogActions>
             </Dialog>
+
+            <HoldingTimeDialog
+              lotNo={lotNo}
+              openHoldingTime={openHoldingTime}
+              setOpenHoldingTime={setOpenHoldingTime}
+              StyledDataGrid={StyledDataGrid}
+            />
           </Grid>
         </Grid>
       </ThemeProvider>
