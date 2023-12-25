@@ -73,39 +73,45 @@ export default function HoldingTimeDialog({
     },
     {
       field: "holding_time",
-      headerName: "Holding Time",
+      headerName: "Waiting Time",
       width: 150,
       headerAlign: "center",
       align: "right",
-      renderCell: (params) => {
-        return (
-          <div
-            className={`${
-              params.value === null ? "text-blue-500" : "text-slate-500"
-            } font-bold drop-shadow-sm`}
-          >
-            {params.value === null ? "N/A" : params.value}
-          </div>
-        );
+      valueFormatter: (params) => {
+        const formattedValue =
+          params.value === null ? "N/A" : params.value.toFixed(0);
+        return formattedValue;
       },
+      renderCell: (params) => (
+        <div
+          className={`${
+            params.value === null ? "text-blue-500" : "text-slate-500"
+          } font-bold drop-shadow-sm`}
+        >
+          {params.value === null ? "N/A" : params.value.toFixed(0)}
+        </div>
+      ),
     },
     {
       field: "in_setup",
-      headerName: "In Setup",
+      headerName: "Input Setup",
       width: 150,
       headerAlign: "center",
       align: "right",
-      renderCell: (params) => {
-        return (
-          <div
-            className={`${
-              params.value === null ? "text-blue-500" : "text-slate-500"
-            } font-bold drop-shadow-sm`}
-          >
-            {params.value === null ? "N/A" : params.value}
-          </div>
-        );
+      valueFormatter: (params) => {
+        const formattedValue =
+          params.value === null ? "N/A" : params.value.toFixed(0);
+        return formattedValue;
       },
+      renderCell: (params) => (
+        <div
+          className={`${
+            params.value === null ? "text-blue-500" : "text-slate-500"
+          } font-bold drop-shadow-sm`}
+        >
+          {params.value === null ? "N/A" : params.value.toFixed(0)}
+        </div>
+      ),
     },
     {
       field: "processing_time",
@@ -113,35 +119,41 @@ export default function HoldingTimeDialog({
       width: 150,
       headerAlign: "center",
       align: "right",
-      renderCell: (params) => {
-        return (
-          <div
-            className={`${
-              params.value === null ? "text-blue-500" : "text-slate-500"
-            } font-bold drop-shadow-sm`}
-          >
-            {params.value === null ? "N/A" : params.value}
-          </div>
-        );
+      valueFormatter: (params) => {
+        const formattedValue =
+          params.value === null ? "N/A" : params.value.toFixed(0);
+        return formattedValue;
       },
+      renderCell: (params) => (
+        <div
+          className={`${
+            params.value === null ? "text-blue-500" : "text-slate-500"
+          } font-bold drop-shadow-sm`}
+        >
+          {params.value === null ? "N/A" : params.value.toFixed(0)}
+        </div>
+      ),
     },
     {
       field: "out_setup",
-      headerName: "Out Setup",
+      headerName: "Output Setup",
       width: 150,
       headerAlign: "center",
       align: "right",
-      renderCell: (params) => {
-        return (
-          <div
-            className={`${
-              params.value === null ? "text-blue-500" : "text-slate-500"
-            } font-bold drop-shadow-sm`}
-          >
-            {params.value === null ? "N/A" : params.value}
-          </div>
-        );
+      valueFormatter: (params) => {
+        const formattedValue =
+          params.value === null ? "N/A" : params.value.toFixed(0);
+        return formattedValue;
       },
+      renderCell: (params) => (
+        <div
+          className={`${
+            params.value === null ? "text-blue-500" : "text-slate-500"
+          } font-bold drop-shadow-sm`}
+        >
+          {params.value === null ? "N/A" : params.value.toFixed(0)}
+        </div>
+      ),
     },
     {
       field: "transport_time",
@@ -149,17 +161,20 @@ export default function HoldingTimeDialog({
       width: 150,
       headerAlign: "center",
       align: "right",
-      renderCell: (params) => {
-        return (
-          <div
-            className={`${
-              params.value === null ? "text-blue-500" : "text-slate-500"
-            } font-bold drop-shadow-sm`}
-          >
-            {params.value === null ? "N/A" : params.value}
-          </div>
-        );
+      valueFormatter: (params) => {
+        const formattedValue =
+          params.value === null ? "N/A" : params.value.toFixed(0);
+        return formattedValue;
       },
+      renderCell: (params) => (
+        <div
+          className={`${
+            params.value === null ? "text-blue-500" : "text-slate-500"
+          } font-bold drop-shadow-sm`}
+        >
+          {params.value === null ? "N/A" : params.value.toFixed(0)}
+        </div>
+      ),
     },
   ];
 

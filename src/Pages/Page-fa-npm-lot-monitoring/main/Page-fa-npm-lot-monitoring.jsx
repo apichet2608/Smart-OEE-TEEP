@@ -222,13 +222,13 @@ const PageFaNpmLotMonitoring = () => {
       headerAlign: "center",
       align: "center",
     },
-    {
-      field: "proc_grp_name",
-      headerName: "Proc Grp Name",
-      width: 140,
-      headerAlign: "center",
-      align: "center",
-    },
+    // {
+    //   field: "proc_grp_name",
+    //   headerName: "Proc Grp Name",
+    //   width: 140,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
     {
       field: "proc_disp",
       headerName: "Proc Disp",
