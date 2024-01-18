@@ -38,7 +38,9 @@ function OEEMasterTable() {
   useEffect(() => {
     axios
       .get(
-        `http://10.17.66.242:3000/smart_oee_teep/oeemastertable/smart_machine_oee_master/master_table?process=${selectedProcess}`
+        `http://10.17.66.242:3000/smart_oee_teep/oeemastertable/smart_machine_oee_master/master_table?process=${encodeURIComponent(
+          selectedProcess
+        )}`
       )
       .then((response) => {
         const data = response.data;
