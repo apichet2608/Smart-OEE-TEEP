@@ -20,6 +20,7 @@ import FujiLogo from "../../../../public/Fuji.png";
 import Icon1 from "../../../../public/icon/efficiency.png";
 import Icon2 from "../../../../public/icon/quickplan.png";
 import Icon3 from "../../../../public/icon/lotmonitoring.png";
+import TableIcon from "../../../../public/icon/table.png";
 import PageTitle from "./Title/Title";
 import Navbuttton from "./Button/Navbuttton";
 import { NavLink, useLocation } from "react-router-dom";
@@ -99,6 +100,7 @@ export default function MiniDrawer() {
   //sidebar items
   const sidebarItems = [
     { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
+    { name: "OEE Master Table", link: "/oee-master-table", icon: TableIcon },
 
     { name: "Quick Plan", link: "/Quick-Plan", icon: Icon2 },
     {
@@ -128,6 +130,8 @@ export default function MiniDrawer() {
           return "Quick Plan";
         case "/fa-npm-lot-monitoring":
           return "FA-NPM Lot";
+        case "/oee-master-table":
+          return "OEE Master Table";
         case "/oee-and-teep":
           return "OEE-and-TEEP";
         // case "/page1":

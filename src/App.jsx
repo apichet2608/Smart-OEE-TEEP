@@ -7,6 +7,7 @@ import Navbar from "./Components/common/Navbar/navbar.jsx";
 import OeeTeep from "./Pages/Page-oee-and-teep/Page-oee-and-teep.jsx";
 import QuickPlan from "./Pages/Page-quick-plan/main/Page-quick-plan.jsx";
 import FaNpmLotMonitoring from "./Pages/Page-fa-npm-lot-monitoring/main/Page-fa-npm-lot-monitoring.jsx";
+import OEEMasterTable from "./Pages/Page-OEE-Master-Table/main/Page-OEE-Master-Table.jsx";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -25,6 +26,8 @@ export default function MiniDrawer() {
           <DrawerHeader />
           <Routes>
             <Route path="/" element={<QuickPlan />} />
+
+            <Route path="/oee-master-table" element={<OEEMasterTable />} />
 
             <Route path="/quick-plan" element={<QuickPlan />} />
             <Route

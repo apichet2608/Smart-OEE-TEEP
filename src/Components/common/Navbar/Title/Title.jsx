@@ -13,6 +13,8 @@ export default function Title() {
           return "Quick Plan";
         case "/quick-plan":
           return "Quick Plan";
+        case "/oee-master-table":
+          return "OEE Master Table";
         case "/fa-npm-lot-monitoring":
           return "FA-NPM Lot Monitoring";
         case "/oee-and-teep":
