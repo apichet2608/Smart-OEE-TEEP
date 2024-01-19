@@ -16,7 +16,9 @@ function OEEMasterTable() {
   useEffect(() => {
     axios
       .get(
-        `http://10.17.66.242:3000/smart_oee_teep/oeemastertable/smart_machine_oee_master/master_table`
+        `${import.meta.env.VITE_IP_API}/${
+          import.meta.env.VITE_smart_oee_master
+        }/master_table`
       )
       .then((response) => {
         const data = response.data;
@@ -38,9 +40,9 @@ function OEEMasterTable() {
   useEffect(() => {
     axios
       .get(
-        `http://10.17.66.242:3000/smart_oee_teep/oeemastertable/smart_machine_oee_master/master_table?process=${encodeURIComponent(
-          selectedProcess
-        )}`
+        `${import.meta.env.VITE_IP_API}/${
+          import.meta.env.VITE_smart_oee_master
+        }/master_table?process=${encodeURIComponent(selectedProcess)}`
       )
       .then((response) => {
         const data = response.data;
@@ -53,17 +55,17 @@ function OEEMasterTable() {
   }, [selectedProcess]);
 
   const columns = [
-    {
-      field: "id",
-      headerName: "ID",
-      width: 100,
-      headerAlign: "center",
-      align: "center",
-    },
+    // {
+    //   field: "id",
+    //   headerName: "ID",
+    //   width: 100,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
     {
       field: "type",
       headerName: "Type",
-      width: 150,
+      width: 50,
       headerAlign: "center",
       align: "center",
     },
@@ -77,28 +79,42 @@ function OEEMasterTable() {
     {
       field: "process",
       headerName: "Process",
-      width: 150,
+      width: 100,
       headerAlign: "center",
       align: "center",
+      renderCell: (params) => {
+        return (
+          <div>
+            <p
+              className={`${
+                selectedProcess ? "text-violet-600 font-bold" : ""
+              }`}
+            >
+              {params.value}
+            </p>
+          </div>
+        );
+      },
     },
     {
       field: "building",
       headerName: "Building",
-      width: 150,
+      width: 100,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "table",
       headerName: "Table",
-      width: 200,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "description",
       headerName: "Description",
-      width: 500,
+      // width: 500,
+      flex: 1,
       headerAlign: "center",
       align: "center",
     },

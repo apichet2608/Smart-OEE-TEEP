@@ -30,7 +30,7 @@ const StyledDataGrid = styled(DataGrid)({
 
 export default function MainDatagrid({ rows, columns }) {
   return (
-    <div>
+    <div className="animate-delay">
       <StyledDataGrid
         rows={rows}
         columns={columns}

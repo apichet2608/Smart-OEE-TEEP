@@ -8,7 +8,7 @@ export default function MainFilter({
   setSelectedProcess,
 }) {
   return (
-    <div className="bg-slate-100 px-2 py-1 rounded-lg w-fit">
+    <div className="animate-fade">
       <Autocomplete
         id="status"
         options={processOptions}
@@ -16,15 +16,38 @@ export default function MainFilter({
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Status"
+            label="Process"
             placeholder="ALL"
             variant="standard"
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#8c37e9", // or 'purple'
+                fontWeight: "bold",
+              },
+              "& .MuiInput-input": {
+                color: "#8c37e9", // Set the default text color
+                fontWeight: "bold",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "#8c37e9", // Set the input bottom border
+              },
+              "& .MuiIconButton-root": {
+                color: "#8c37e9", // Set the icon color
+              },
+            }}
           />
         )}
-        sx={{ width: 200 }}
+        sx={{ width: 300 }}
         onChange={(event, value) => {
           setSelectedProcess(value ? value : "");
         }}
+        renderOption={(props, option) => (
+          <li {...props}>
+            <div className="whitespace-pre-wrap font-semibold mr-10 text-purple-600">
+              {option}
+            </div>
+          </li>
+        )}
       />
     </div>
   );

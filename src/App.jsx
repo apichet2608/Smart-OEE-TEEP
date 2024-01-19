@@ -25,7 +25,7 @@ export default function MiniDrawer() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
           <Routes>
-            <Route path="/" element={<QuickPlan />} />
+            <Route path="/" element={<OeeTeep />} />
 
             <Route path="/oee-master-table" element={<OEEMasterTable />} />
 

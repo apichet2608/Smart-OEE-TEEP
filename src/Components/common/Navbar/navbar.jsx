@@ -125,7 +125,7 @@ export default function MiniDrawer() {
     const getPageTitle = () => {
       switch (location.pathname) {
         case "/":
-          return "Quick Plan";
+          return "OEE-and-TEEP";
         case "/quick-plan":
           return "Quick Plan";
         case "/fa-npm-lot-monitoring":
