@@ -24,7 +24,7 @@ const StyledDataGrid = styled(DataGrid)({
     color: "#3371ff",
     fontSize: "15px",
     textAlign: "center",
-    FontFace: "Poppins",
+    fontFace: "Poppins", // Note: Corrected property name to lowercase 'fontFace'
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -38,9 +38,9 @@ const StyledDataGrid = styled(DataGrid)({
   },
   "& ::-webkit-scrollbar-thumb": {
     borderRadius: "4px",
-
     backgroundColor: "#3b82f6",
   },
+  borderRadius: "16px", // Set the border radius for the entire DataGrid
 });
 
 //TODO: <---------------------------------------- Main Component ---------------------------------------->
