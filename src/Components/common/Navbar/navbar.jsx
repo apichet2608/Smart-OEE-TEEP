@@ -103,11 +103,11 @@ export default function MiniDrawer() {
     { name: "OEE Master Table", link: "/oee-master-table", icon: TableIcon },
 
     { name: "Quick Plan", link: "/Quick-Plan", icon: Icon2 },
-    {
-      name: "FA-NPM Lot",
-      link: "/FA-NPM-Lot-Monitoring",
-      icon: Icon3,
-    },
+    // {
+    //   name: "FA-NPM Lot",
+    //   link: "/FA-NPM-Lot-Monitoring",
+    //   icon: Icon3,
+    // },
     // { name: "OEE-and-TEEP", link: "/OEE-and-TEEP", icon: Icon1 },
     // { name: "Page1", link: "/page", icon: Icon2 },
     // { name: "Page2", link: "/page1", icon: Icon3 },
@@ -128,8 +128,8 @@ export default function MiniDrawer() {
           return "OEE-and-TEEP";
         case "/quick-plan":
           return "Quick Plan";
-        case "/fa-npm-lot-monitoring":
-          return "FA-NPM Lot";
+        // case "/fa-npm-lot-monitoring":
+        //   return "FA-NPM Lot";
         case "/oee-master-table":
           return "OEE Master Table";
         case "/oee-and-teep":
